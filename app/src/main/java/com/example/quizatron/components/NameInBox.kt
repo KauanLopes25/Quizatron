@@ -1,0 +1,32 @@
+package com.example.quizatron.components
+
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+
+@Composable
+fun NameInBox(
+    modifier: Modifier,
+    label: String,
+    placeholder: String,
+    keyboardType: KeyboardType,
+    value: String,
+    atualizarValor: (String) -> Unit
+) {
+    OutlinedTextField(
+        modifier = modifier,
+        value = value,
+        onValueChange = {
+            atualizarValor(it)
+        },
+        label = { Text(text = label) },
+        placeholder = { Text(text = placeholder) },
+        keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
+    )
+}

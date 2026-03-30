@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.quizatron.screens.quiz.QuizScreen
 import com.example.quizatron.screens.result.ResultScreen
 import com.example.quizatron.screens.start.StartScreen
@@ -39,9 +41,15 @@ class MainActivity : ComponentActivity() {
                             QuizScreen(navController)
                         }
                         composable(
-                            route = "result",
-                        ) {
-                            ResultScreen(navController)
+                            route = "result/{acertos}",
+                            arguments = listOf(
+                                navArgument("acertos") {
+                                    type = NavType.IntType
+                                }
+                            )
+                        ) { navBackStackEntry ->
+                            val acertos = navBackStackEntry.arguments?.getInt("acertos")
+                            ResultScreen(navController, resultado = acertos)
                         }
                     }
                 }

@@ -220,7 +220,7 @@ fun QuizScreen(navController: NavController){
             }
 
         } else {
-            navController.navigate("result")
+            navController.navigate("result/$acertos")
         }
     }
 }

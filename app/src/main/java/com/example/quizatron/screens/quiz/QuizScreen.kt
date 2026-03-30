@@ -1,5 +1,6 @@
 package com.example.quizatron.screens.quiz
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,6 +18,10 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,17 +30,24 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.quizatron.R
 import com.example.quizatron.components.checkBox
+import com.example.quizatron.screens.result.ResultScreen
 
 @Composable
-fun QuizScreen(modifier: Modifier = Modifier){
-    var pergunta: Int = 2
+fun QuizScreen(navController: NavController){
+    var pergunta by remember {
+        mutableStateOf(1)
+    }
+    var acertos by remember  {
+        mutableStateOf(0)
+    }
 
 
 
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
             .background(colorResource(R.color.pink_question))
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -61,7 +73,7 @@ fun QuizScreen(modifier: Modifier = Modifier){
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Pergunta $pergunta de 3",
+                text = "Pergunta $pergunta de 2",
                 fontSize = 27.sp,
                 color = Color.Black
             )
@@ -94,21 +106,51 @@ fun QuizScreen(modifier: Modifier = Modifier){
                         )
                     }
                     checkBox(
-                        Modifier, "Londres"
-                    )
+                        Modifier, "Londres",
+                        false
+
+                    ) {
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 2
+                            acertos + 0
+                        }
+                    }
                     checkBox(
-                        Modifier, "Berlim"
-                    )
+                        Modifier, "Berlim",
+                        false
+                    ) {
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 2
+                            acertos + 0
+                        }
+                    }
                     checkBox(
-                        Modifier, "Paris"
-                    )
+                        Modifier, "Paris",
+                        true
+                    ) {
+                        retorno ->
+                        if (retorno == true) {
+                            pergunta = 2
+                            acertos + 1
+                        }
+                    }
                     checkBox(
-                        Modifier, "Madri"
-                    )
+                        Modifier, "Madri",
+                        false
+                    ) {
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 2
+                            acertos + 0
+                        }
+                    }
                 }
             }
-//            2 Pergunta...............................................................
-        } else if(pergunta == 2){
+        }
+        //2 Pergunta...............................................................
+        else if(pergunta == 2){
             Card(
                 modifier = Modifier.fillMaxWidth(),
                 colors = CardDefaults.cardColors(
@@ -135,19 +177,50 @@ fun QuizScreen(modifier: Modifier = Modifier){
                         )
                     }
                     checkBox(
-                        Modifier, "Vênus"
-                    )
+                        Modifier, "Vênus",
+                        false
+                    ) {
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 3
+                            acertos + 0
+                        }
+                    }
                     checkBox(
-                        Modifier, "Marte"
-                    )
+                        Modifier, "Marte",
+                        true
+                    ) {
+                        retorno ->
+                        if (retorno == true) {
+                            pergunta = 3
+                            acertos + 1
+                        }
+                    }
                     checkBox(
-                        Modifier, "Júpiter"
-                    )
+                        Modifier, "Júpiter",
+                        false
+                    ) {
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 3
+                            acertos + 0
+                        }
+                    }
                     checkBox(
-                        Modifier, "Saturno"
-                    )
+                        Modifier, "Saturno",
+                        false
+                    ){
+                        retorno ->
+                        if (retorno == false) {
+                            pergunta = 3
+                            acertos + 0
+                        }
+                    }
                 }
             }
+
+        } else {
+            navController.navigate("result")
         }
     }
 }

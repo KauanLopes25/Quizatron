@@ -1,6 +1,7 @@
 package com.example.quizatron.screens.start
 
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -14,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,14 +25,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.quizatron.R
 
 @Composable
-fun StartScreen(modifier: Modifier = Modifier){
+fun StartScreen(navController: NavController){
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
             .background(colorResource(R.color.blue_baby))
             .padding(
                 top = 100.dp,
@@ -63,20 +68,27 @@ fun StartScreen(modifier: Modifier = Modifier){
                 color = Color.Black
             )
         }
-        Row(
-            modifier = Modifier.width(220.dp)
-                .height(50.dp)
-                .clip(RoundedCornerShape(30.dp))
-                .background(colorResource(R.color.yellow_question))
-                .border(1.dp, Color.Black, RoundedCornerShape(30.dp)),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
+        OutlinedButton(
+            onClick = {
+                navController.navigate("quiz")
+             },
+            modifier = Modifier
+                .width(220.dp)
+                .height(50.dp),
+            shape = RoundedCornerShape(30.dp),
+            border = BorderStroke(1.dp, Color.Black),
+            colors = ButtonDefaults.outlinedButtonColors(
+                containerColor = colorResource(R.color.yellow_question),
+                contentColor = Color.Black
+            )
         ) {
             Text(
                 text = "COMEÇAR!",
                 fontSize = 20.sp,
+                fontWeight = FontWeight.W400,
                 color = Color.Black
             )
         }
+
     }
 }

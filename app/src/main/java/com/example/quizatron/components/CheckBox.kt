@@ -1,6 +1,7 @@
 package com.example.quizatron.components
 
 import android.R
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -21,14 +22,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun checkBox(
     modifier: Modifier,
     alternativa: String,
+    result: Boolean,
+    onAnswer: (Boolean) -> Unit // callback
 ) {
     OutlinedButton(
-        onClick = {/* TUDO */},
+        onClick = {
+            onAnswer(result)
+        },
         modifier = Modifier.fillMaxWidth()
             .height(50.dp),
         enabled = true,
@@ -36,8 +43,9 @@ fun checkBox(
         colors = ButtonDefaults.buttonColors(Color.White)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.Start,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = alternativa,
@@ -46,5 +54,6 @@ fun checkBox(
                 color = Color.Black
             )
         }
+
     }
 }

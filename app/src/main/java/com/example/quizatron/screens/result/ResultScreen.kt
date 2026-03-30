@@ -27,16 +27,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.quizatron.R
 
 @Composable
-fun ResultScreen(modifier: Modifier = Modifier) {
-    var pergunta: Int = 2
+fun ResultScreen(navController: NavController, resultado: Int) {
+    var resultado = resultado
 
 
 
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
             .background(Color.White)
             .padding(
                 top = 20.dp

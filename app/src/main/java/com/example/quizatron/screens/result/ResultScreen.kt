@@ -31,13 +31,13 @@ import androidx.navigation.NavController
 import com.example.quizatron.R
 
 @Composable
-fun ResultScreen(navController: NavController, resultado: Int) {
+fun ResultScreen(navController: NavController, resultado: Int, nome: String) {
 
     val (mensagem, fundo) = when (resultado) {
-        1 -> "Quase lá!" to colorResource(R.color.pink_question)
-        2 -> "Bom Trabalho!" to colorResource(R.color.yellow_question)
-        3 -> "Perfeito!" to colorResource(R.color.blue_baby)
-        else -> "Que pena" to Color.Red
+        1 -> "Quase lá! $nome" to colorResource(R.color.pink_question)
+        2 -> "Bom Trabalho! $nome" to colorResource(R.color.yellow_question)
+        3 -> "Perfeito! $nome" to colorResource(R.color.blue_baby)
+        else -> "Que pena! $nome" to Color.Red
     }
     Column(
         modifier = Modifier.fillMaxSize()

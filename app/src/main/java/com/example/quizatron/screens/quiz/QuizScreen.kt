@@ -36,7 +36,7 @@ import com.example.quizatron.components.checkBox
 import com.example.quizatron.screens.result.ResultScreen
 
 @Composable
-fun QuizScreen(navController: NavController){
+fun QuizScreen(navController: NavController, nome: String){
     var pergunta by remember {
         mutableStateOf(1)
     }
@@ -270,7 +270,7 @@ fun QuizScreen(navController: NavController){
                         }
                     }
                     checkBox(
-                        Modifier, "Cloreto de Alumínio",
+                        Modifier, "Cloreto de Cálcio",
                         false
                     ){
                             retorno ->
@@ -282,7 +282,7 @@ fun QuizScreen(navController: NavController){
             }
 
         } else {
-            navController.navigate("result/$acertos")
+            navController.navigate("result/$acertos/$nome")
         }
     }
 }

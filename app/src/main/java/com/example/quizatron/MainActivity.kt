@@ -36,12 +36,18 @@ class MainActivity : ComponentActivity() {
                             StartScreen(navController)
                         }
                         composable(
-                            route = "quiz",
-                        ) {
-                            QuizScreen(navController)
+                            route = "quiz/{nome}",
+                            arguments = listOf(
+                                navArgument("nome") {
+                                    type = NavType.StringType
+                                }
+                            )
+                        ) { navBackStackEntry ->
+                            val nome = navBackStackEntry.arguments?.getString("nome") ?: ""
+                            QuizScreen(navController, nome = nome)
                         }
                         composable(
-                            route = "result/{acertos}",
+                            route = "result/{acertos}/{nome}",
                             arguments = listOf(
                                 navArgument("acertos") {
                                     type = NavType.IntType
@@ -49,7 +55,8 @@ class MainActivity : ComponentActivity() {
                             )
                         ) { navBackStackEntry ->
                             val acertos = navBackStackEntry.arguments?.getInt("acertos") ?: 0
-                            ResultScreen(navController, resultado = acertos)
+                            val nome = navBackStackEntry.arguments?.getString("nome") ?: ""
+                            ResultScreen(navController, resultado = acertos, nome = nome)
                         }
                     }
                 }

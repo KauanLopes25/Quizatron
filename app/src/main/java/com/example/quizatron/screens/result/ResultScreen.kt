@@ -85,14 +85,16 @@ fun ResultScreen(navController: NavController, resultado: Int) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Você acertou a 1 de 3 perguntas",
+                    text = "Você acertou a $resultado de 2 perguntas",
                     fontSize = 24.sp,
                     color = Color.Black
                 )
             }
         }
         OutlinedButton(
-            onClick = {/* TUDO */},
+            onClick = {
+                navController.navigate(route = "start")
+            },
             border = null,
             modifier = Modifier.width(300.dp)
                 .height(50.dp)

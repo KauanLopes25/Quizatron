@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                                 }
                             )
                         ) { navBackStackEntry ->
-                            val acertos = navBackStackEntry.arguments?.getInt("acertos")
+                            val acertos = navBackStackEntry.arguments?.getInt("acertos") ?: 0
                             ResultScreen(navController, resultado = acertos)
                         }
                     }

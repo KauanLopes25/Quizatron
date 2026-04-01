@@ -113,7 +113,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 2
-                            acertos + 0
                         }
                     }
                     checkBox(
@@ -123,7 +122,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 2
-                            acertos + 0
                         }
                     }
                     checkBox(
@@ -133,7 +131,7 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == true) {
                             pergunta = 2
-                            acertos + 1
+                            acertos = acertos + 1
                         }
                     }
                     checkBox(
@@ -143,7 +141,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 2
-                            acertos + 0
                         }
                     }
                 }
@@ -183,7 +180,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 3
-                            acertos + 0
                         }
                     }
                     checkBox(
@@ -193,7 +189,7 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == true) {
                             pergunta = 3
-                            acertos + 1
+                            acertos = acertos + 1
                         }
                     }
                     checkBox(
@@ -203,7 +199,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 3
-                            acertos + 0
                         }
                     }
                     checkBox(
@@ -213,7 +208,6 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 3
-                            acertos + 0
                         }
                     }
                 }

@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -32,11 +35,35 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(
                             route = "start",
+                            exitTransition = {
+                                slideOutOfContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                                    tween(4000)
+                                ) + fadeOut(tween(4000))
+                            },
+                            enterTransition = {
+                                slideIntoContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Up,
+                                    animationSpec = tween(4000)
+                                )
+                            }
                         ) {
                             StartScreen(navController)
                         }
                         composable(
                             route = "quiz/{nome}",
+                            exitTransition = {
+                                slideOutOfContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                                    tween(2000)
+                                ) + fadeOut(tween(2000))
+                            },
+                            enterTransition = {
+                                slideIntoContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                                    animationSpec = tween(4000)
+                                )
+                            },
                             arguments = listOf(
                                 navArgument("nome") {
                                     type = NavType.StringType
@@ -48,6 +75,18 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(
                             route = "result/{acertos}/{nome}",
+                            exitTransition = {
+                                slideOutOfContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Up,
+                                    tween(4000)
+                                ) + fadeOut(tween(4000))
+                            },
+                            enterTransition = {
+                                slideIntoContainer(
+                                    towards = AnimatedContentTransitionScope.SlideDirection.Right,
+                                    animationSpec = tween(2000)
+                                )
+                            },
                             arguments = listOf(
                                 navArgument("acertos") {
                                     type = NavType.IntType

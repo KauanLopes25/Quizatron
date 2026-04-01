@@ -101,12 +101,12 @@ fun QuizScreen(navController: NavController, nome: String){
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Qual a capital da França?",
+                            text = "FISICA - Qual é a unidade de medida da força?",
                             fontSize = 25.sp
                         )
                     }
                     checkBox(
-                        Modifier, "Londres",
+                        Modifier, "Pascal",
                         false
 
                     ) {
@@ -116,7 +116,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Berlim",
+                        Modifier, "Watt",
                         false
                     ) {
                         retorno ->
@@ -125,7 +125,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Paris",
+                        Modifier, "Newton",
                         true
                     ) {
                         retorno ->
@@ -135,7 +135,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Madri",
+                        Modifier, "Joule",
                         false
                     ) {
                         retorno ->
@@ -169,12 +169,12 @@ fun QuizScreen(navController: NavController, nome: String){
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "Qual planeta é conhecido como platena vermelho?",
+                            text = "FISICA - Qual é a unidade de medida da resistência elétrica? ",
                             fontSize = 25.sp
                         )
                     }
                     checkBox(
-                        Modifier, "Vênus",
+                        Modifier, "Watt",
                         false
                     ) {
                         retorno ->
@@ -183,7 +183,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Marte",
+                        Modifier, "Ohm",
                         true
                     ) {
                         retorno ->
@@ -193,7 +193,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Júpiter",
+                        Modifier, "Ampère",
                         false
                     ) {
                         retorno ->
@@ -202,7 +202,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         }
                     }
                     checkBox(
-                        Modifier, "Saturno",
+                        Modifier, "Volt",
                         false
                     ){
                         retorno ->
@@ -237,7 +237,7 @@ fun QuizScreen(navController: NavController, nome: String){
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "'NaCi é a fórmula de qual solução química?",
+                            text = "QUIMICA - (NaCi) é a fórmula de qual solução química?",
                             fontSize = 25.sp
                         )
                     }

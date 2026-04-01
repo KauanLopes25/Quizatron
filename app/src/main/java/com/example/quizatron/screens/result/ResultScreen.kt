@@ -32,10 +32,13 @@ import com.example.quizatron.R
 
 @Composable
 fun ResultScreen(navController: NavController, resultado: Int) {
-    var resultado = resultado
 
-
-
+    val (mensagem, fundo) = when (resultado) {
+        1 -> "Quase lá!" to colorResource(R.color.pink_question)
+        2 -> "Bom Trabalho!" to colorResource(R.color.yellow_question)
+        3 -> "Perfeito!" to colorResource(R.color.blue_baby)
+        else -> "Que pena" to Color.Red
+    }
     Column(
         modifier = Modifier.fillMaxSize()
             .background(Color.White)
@@ -58,7 +61,7 @@ fun ResultScreen(navController: NavController, resultado: Int) {
         Column(
             modifier = Modifier.fillMaxWidth()
                 .height(200.dp)
-                .background(colorResource(R.color.blue_baby)),
+                .background(fundo),
             verticalArrangement = Arrangement.spacedBy(
                 40.dp,
                alignment = Alignment.CenterVertically
@@ -75,7 +78,7 @@ fun ResultScreen(navController: NavController, resultado: Int) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Bom trabalho!",
+                    text = "$mensagem",
                     fontSize = 24.sp,
                     color = Color.Black
                 )
@@ -85,7 +88,7 @@ fun ResultScreen(navController: NavController, resultado: Int) {
                 horizontalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = "Você acertou a $resultado de 2 perguntas",
+                    text = "Você acertou a $resultado de 3 perguntas",
                     fontSize = 24.sp,
                     color = Color.Black
                 )

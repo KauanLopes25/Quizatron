@@ -73,7 +73,7 @@ fun QuizScreen(navController: NavController){
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Pergunta $pergunta de 2",
+                text = "Pergunta $pergunta de 3",
                 fontSize = 27.sp,
                 color = Color.Black
             )
@@ -208,6 +208,74 @@ fun QuizScreen(navController: NavController){
                         retorno ->
                         if (retorno == false) {
                             pergunta = 3
+                        }
+                    }
+                }
+            }
+
+        }
+        //Pergunta 03
+        else if(pergunta == 3){
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
+                ),
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                        .padding(
+                            top = 30.dp,
+                            bottom = 40.dp,
+                            start = 20.dp,
+                            end = 20.dp
+                        ),
+                    verticalArrangement = Arrangement.spacedBy(20.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            text = "'NaCi é a fórmula de qual solução química?",
+                            fontSize = 25.sp
+                        )
+                    }
+                    checkBox(
+                        Modifier, "Cloreto de Sódio",
+                        true
+                    ) {
+                            retorno ->
+                        if (retorno == true) {
+                            pergunta = 0
+                            acertos = acertos + 1
+                        }
+                    }
+                    checkBox(
+                        Modifier, "Cloreto de Potássio",
+                        false
+                    ) {
+                            retorno ->
+                        if (retorno == false) {
+                            pergunta = 0
+                        }
+                    }
+                    checkBox(
+                        Modifier, "Cloreto de Alumínio",
+                        false
+                    ) {
+                            retorno ->
+                        if (retorno == false) {
+                            pergunta = 0
+                        }
+                    }
+                    checkBox(
+                        Modifier, "Cloreto de Alumínio",
+                        false
+                    ){
+                            retorno ->
+                        if (retorno == false) {
+                            pergunta = 0
                         }
                     }
                 }
